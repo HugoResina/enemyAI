@@ -19,6 +19,11 @@ public class EnemyBehaviour : MonoBehaviour
     public bool isChasing;
     public bool isAttacking;
 
+
+    
+    public CapsuleCollider attackCollider; 
+    public int damage = 1;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -57,6 +62,17 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (!isChasing || isDead) return;  
+
+        if (collision.transform == target)
+        {
+           
+            Debug.Log("Golpea al jugador");
+        }
+    }
+   
     public void TakeDamage(int amount)
     {
         HP -= amount;
