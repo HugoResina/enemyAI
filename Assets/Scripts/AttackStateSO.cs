@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AttackState", menuName = "Scriptable Objects/AttackState")]
 public class AttackStateSO : NodeSO
 {
-    public float attackCooldown = 0.75f;  
+    public float attackCooldown = 0.7f;  
     private float _attackTimer;
 
     
@@ -14,7 +14,7 @@ public class AttackStateSO : NodeSO
     {
         eb.agent.isStopped = true;
         _attackTimer = 0f;
-        Debug.Log("Enter Attack");
+       
 
        
     }
@@ -46,7 +46,7 @@ public class AttackStateSO : NodeSO
         if (_attackTimer <= 0f)
         {
             
-            Debug.Log("Attack?");
+            eb.DealDamage();
                       
 
             _attackTimer = attackCooldown;
